@@ -1,7 +1,8 @@
 Package.describe({
   name: 'smithy:describe',
   summary: 'A simple description like syntax for testing meteor packages with Tinytest',
-  version: '0.1.0'
+  version: '0.1.0',
+  git: 'https://github.com/paolo/smithy-describe.git'
 });
 
 Package.onUse(function (api) {
