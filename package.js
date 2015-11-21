@@ -13,7 +13,8 @@ Package.onUse(function (api) {
   //
   var packages = [
     'tinytest',
-    'ecmascript'
+    'ecmascript',
+    'underscore'
   ];
   api.use(packages);
   api.imply(packages);
