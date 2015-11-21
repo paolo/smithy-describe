@@ -1,6 +1,8 @@
 # smithy:describe
 
-A simple describe like syntax for testing meteor packages with Tinytest.
+[![Circle CI](https://circleci.com/gh/paolo/smithy-describe.svg?style=svg)](https://circleci.com/gh/paolo/smithy-describe)
+
+A simple **'describe'** like syntax for testing meteor packages with Tinytest.
 
 ## Install
 
