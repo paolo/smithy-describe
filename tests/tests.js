@@ -36,10 +36,17 @@ Tinytest.add('Describe - Execution Flow', function(test) {
         str += 'd'
       });
     });
+
+    context('When running other description', function() {
+      str += ',e';
+      it('should run at the end', function(t) {
+        str += 'f';
+      });
+    });
   });
   Tinytest.add - _add;
 
-  test.equal('ab[(c)(d)]', str);
+  test.equal('ab[(c)(d)],ef', str);
   test.equal('Step1 - When running description - before', texts[0]);
   test.equal('Step1 - When running description - beforeEach (should do this)', texts[1]);
   test.equal('Step1 - When running description - should do this', texts[2]);
@@ -48,4 +55,5 @@ Tinytest.add('Describe - Execution Flow', function(test) {
   test.equal('Step1 - When running description - should do this too', texts[5]);
   test.equal('Step1 - When running description - afterEach (should do this too)', texts[6]);
   test.equal('Step1 - When running description - after', texts[7]);
+  test.equal('Step1 - When running other description - should run at the end', texts[8]);
 });
