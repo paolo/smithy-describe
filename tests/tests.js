@@ -86,6 +86,13 @@ describe('Real test execution', function() {
   });
 
   context('Async test', function() {
+
+    before(function(done) {
+      Meteor.setTimeout(() => {
+        done();
+      }, 100);
+    });
+
     it('should be true', function(test, done) {
       Meteor.setTimeout(() => {
         test.isTrue(true);
