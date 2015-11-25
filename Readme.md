@@ -2,7 +2,8 @@
 
 [![Circle CI](https://circleci.com/gh/paolo/smithy-describe.svg?style=svg)](https://circleci.com/gh/paolo/smithy-describe)
 
-A simple **'describe'** like syntax for testing meteor packages with Tinytest.
+A simple **'describe'** like syntax for testing meteor packages with **Tinytest**. It also ships with **sinon** and
+**chai**.
 
 ## Install
 
@@ -15,8 +16,8 @@ Package.onTest(function(api) {
 });
 ```
 
-```tinytest``` and ```ecmascript``` are already implied on ```smithy:describe```
-so you can use both right away.
+```tinytest```, ```ecmascript``` and ```underscore``` are already implied on ```smithy:describe```
+so you can use them right away.
 
 ## Usage
 
@@ -42,12 +43,34 @@ describe('Some Scenario', function() {
       // runs after each test
     });
 
-    it('test 1', function(test) {
+    it('test 1', function() {
       // first test
+      expect(1).to.equal(1);
     });
 
-    it('test 2', function(test) {
+    it('test 2', function() {
       // second test
+      expect(2).to.equal(2);
+    });
+  });
+});
+
+describe('Some Async Scenario', function() {
+  context('Async context', function() {
+    before(function(done) {
+      Meteor.setTimeout(() => {
+        done();
+      });
+    });
+
+    it('test async', function(done) {
+      // async test (needs try/catch on every async block, or you can use catchable)
+      Meteor.setTimeout(() => {
+        catchable(done, () => {
+          expect('async').to.equal('async');
+          done();
+        });
+      });
     });
   });
 });
