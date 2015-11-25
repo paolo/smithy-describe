@@ -3,6 +3,9 @@ machine:
     version: 0.10.40
 
 dependencies:
+  cache_directories:
+    - "~/.meteor"
+    - "~/nvm/v0.10.40/lib/node_modules"
   pre:
     - curl https://install.meteor.com | /bin/sh
   override:
