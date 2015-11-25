@@ -5,6 +5,11 @@ Package.describe({
   git: 'https://github.com/paolo/smithy-describe.git'
 });
 
+Npm.depends({
+  'sinon': '1.17.2',
+  'chai': '3.4.1'
+});
+
 Package.onUse(function (api) {
   api.versionsFrom('1.2.1');
 
@@ -19,15 +24,21 @@ Package.onUse(function (api) {
   api.use(packages);
   api.imply(packages);
 
+  api.use('cosmos:browserify@0.9.2', 'client');
+
   //
   // Files
   //
+  api.addFiles('packages.browserify.js');
   api.addFiles('lib/describe.js');
 
   //
   // Exports
   //
+  api.export('sinon');
+  api.export('expect');
   api.export('describe');
+  api.export('catchable');
 });
 
 Package.onTest(function (api) {

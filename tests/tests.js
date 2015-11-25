@@ -54,11 +54,11 @@ Tinytest.add('Describe - Execution Flow', function(test) {
 
     context('When running async', function() {
       str += ',g';
-      it('should run async', (t, done) => {
+      it('should run async', (done) => {
         str += 'h';
         Meteor.setTimeout(function() {
           done();
-        }, 100);
+        }, 1);
       });
     });
   });
@@ -80,8 +80,8 @@ Tinytest.add('Describe - Execution Flow', function(test) {
 
 describe('Real test execution', function() {
   context('Sync test', function() {
-    it('should be true', function(test) {
-      test.isTrue(true);
+    it('should be true', function() {
+      expect(1, 'should be 1').to.equal(1);
     });
   });
 
@@ -90,14 +90,16 @@ describe('Real test execution', function() {
     before(function(done) {
       Meteor.setTimeout(() => {
         done();
-      }, 100);
+      }, 1);
     });
 
-    it('should be true', function(test, done) {
+    it('should be true', function(done) {
       Meteor.setTimeout(() => {
-        test.isTrue(true);
-        done();
-      }, 100);
+        catchable(done, () => {
+          expect(1).to.equal(1);
+          done();
+        });
+      }, 1);
     });
   });
 });
