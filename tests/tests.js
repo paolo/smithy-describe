@@ -103,3 +103,33 @@ describe('Real test execution', function() {
     });
   });
 });
+
+describe('Promises', function() {
+  context('Async tests using promises', function() {
+
+    let isOne = function(param, cb) {
+      if (param === 1) {
+        cb(null, true);
+      } else {
+        cb('not one');
+      }
+    };
+
+    it('should pass when promise succeeds', function(done) {
+      promisify(isOne, 1).then(function(r) {
+        expect(r).to.equal(true);
+        done();
+      });
+    });
+
+    it('should allow us to catch errors', function(done) {
+      promisify(isOne, 0).then(function(r) {
+        expect(r).to.be.undefined;
+        done();
+      }).catch(function(e) {
+        expect(e).to.equal('not one');
+        done();
+      });
+    });
+  });
+});
