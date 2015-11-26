@@ -30,6 +30,7 @@ Package.onUse(function (api) {
   // Files
   //
   api.addFiles('packages.browserify.js');
+  api.addFiles('lib/utils.js');
   api.addFiles('lib/describe.js');
 
   //
@@ -39,6 +40,7 @@ Package.onUse(function (api) {
   api.export('expect');
   api.export('describe');
   api.export('catchable');
+  api.export('promisify');
 });
 
 Package.onTest(function (api) {
