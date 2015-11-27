@@ -103,3 +103,46 @@ describe('Real test execution', function() {
     });
   });
 });
+
+Meteor.methods({
+  isOne (number) {
+    if (number !== 1) throw new Meteor.Error('not one');
+    return true;
+  }
+});
+
+describe('Promises', function () {
+  context('Async tests using promises', function () {
+
+    it('should pass when promise succeeds', function (done) {
+      promisify(Meteor.call, 'isOne', 1).then(function (r) {
+        expect(r).to.equal(true);
+        done();
+      });
+    });
+
+    it('should allow us to catch errors', function (done) {
+      promisify(Meteor.call, 'isOne', 1).then(function (r) {
+        expect(r).to.equal(true);
+      }).then(function () {
+        return promisify(Meteor.call, 'isOne', 0);
+      }).then(function (r) {
+        expect(r).to.be.undefined;
+        done();
+      }).catch(function (e) {
+        expect(e.error).to.equal('not one');
+        done();
+      });
+    });
+
+    it('should work with Promise.all as well', function (done) {
+      Promise.all([promisify(Meteor.call, 'isOne', 1), promisify(Meteor.call, 'isOne', 1)]).then((values) => {
+        expect(values[0]).to.equal(true);
+        expect(values[1]).to.equal(true);
+        done();
+      }).catch((e) => {
+        done(e);
+      })
+    });
+  });
+});
