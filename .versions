@@ -24,7 +24,7 @@ html-tools@1.0.5
 htmljs@1.0.5
 id-map@1.0.4
 jquery@1.11.4
-local-test:smithy:describe@0.1.5
+local-test:smithy:describe@1.0.0
 logging@1.0.8
 meteor@1.1.10
 minimongo@1.0.10
@@ -38,7 +38,7 @@ random@1.0.5
 reactive-var@1.0.6
 retry@1.0.4
 routepolicy@1.0.6
-smithy:describe@0.1.5
+smithy:describe@1.0.0
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 tinytest@1.0.6
