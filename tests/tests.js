@@ -124,7 +124,6 @@ describe('Promises', function () {
     it('should allow us to catch errors', function (done) {
       promisify(Meteor.call, 'isOne', 1).then(function (r) {
         expect(r).to.equal(true);
-        done();
       }).then(function () {
         return promisify(Meteor.call, 'isOne', 0);
       }).then(function (r) {
