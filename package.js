@@ -1,8 +1,9 @@
 Package.describe({
   name: 'smithy:describe',
-  summary: 'A simple "describe" like syntax for testing meteor packages with Tinytest',
-  version: '0.1.5',
-  git: 'https://github.com/paolo/smithy-describe.git'
+  summary: 'A simple "describe" like syntax for testing Meteor packages with Tinytest',
+  version: '1.0.0',
+  git: 'https://github.com/paolo/smithy-describe.git',
+  readme: 'Readme.md'
 });
 
 Npm.depends({
@@ -44,7 +45,7 @@ Package.onUse(function (api) {
 });
 
 Package.onTest(function (api) {
-  api.use('smithy:describe@0.1.5');
+  api.use('smithy:describe@1.0.0');
 
   api.addFiles('tests/tests.js');
 });
