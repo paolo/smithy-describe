@@ -38,7 +38,7 @@ random@1.0.5
 reactive-var@1.0.6
 retry@1.0.4
 routepolicy@1.0.6
-smithy:describe@1.0.0
+smithy:describe@1.0.1
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 tinytest@1.0.6
