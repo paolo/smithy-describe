@@ -7,7 +7,8 @@ dependencies:
     - "~/.meteor"
     - "~/nvm/v0.10.40/lib/node_modules"
   pre:
-    - curl https://install.meteor.com | /bin/sh
+    - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
+    - if [ ! -e ~/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
   override:
     - npm install -g spacejam
 
