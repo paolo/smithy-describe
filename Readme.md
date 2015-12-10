@@ -27,7 +27,7 @@ your tests using a syntax similar to the one describe above.
 
 ```javascript
 describe('Some Scenario', function() {
-  context('When some context is set', function() {
+  describe('When some context is set', function() {
     before(function() {
       // runs before all tests (it functions)
     });
@@ -57,7 +57,7 @@ describe('Some Scenario', function() {
 });
 
 describe('Some Async Scenario', function() {
-  context('Async context', function() {
+  describe('Async context', function() {
     before(function(done) {
       Meteor.setTimeout(() => {
         done();

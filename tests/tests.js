@@ -18,7 +18,7 @@ Tinytest.add('Describe - Execution Flow', function(test) {
   let str = '';
   describe('Step1', function() {
     str += 'a';
-    context('When running description', function() {
+    describe('When running description', function() {
       str += 'b';
       before(function() {
         str += '[';
@@ -45,14 +45,14 @@ Tinytest.add('Describe - Execution Flow', function(test) {
       });
     });
 
-    context('When running other description', function() {
+    describe('When running other description', function() {
       str += ',e';
       it('should run at the end', function() {
         str += 'f';
       });
     });
 
-    context('When running async', function() {
+    describe('When running async', function() {
       str += ',g';
       it('should run async', (done) => {
         str += 'h';
@@ -79,13 +79,13 @@ Tinytest.add('Describe - Execution Flow', function(test) {
 });
 
 describe('Real test execution', function() {
-  context('Sync test', function() {
+  describe('Sync test', function() {
     it('should be true', function() {
       expect(1, 'should be 1').to.equal(1);
     });
   });
 
-  context('Async test', function() {
+  describe('Async test', function() {
 
     before(function(done) {
       Meteor.setTimeout(() => {
@@ -112,7 +112,7 @@ Meteor.methods({
 });
 
 describe('Promises', function () {
-  context('Async tests using promises', function () {
+  describe('Async tests using promises', function () {
 
     it('should pass when promise succeeds', function (done) {
       promisify(Meteor.call, 'isOne', 1).then(function (r) {
